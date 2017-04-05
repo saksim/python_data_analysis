@@ -71,8 +71,9 @@ logreg = LogisticRegression()
 logreg.fit(enc.transform(X_train),Y_train)
 
 '''查看准确率'''
-print logreg.score(enc.transform(X_train),Y_train)
-
+Y_score = logreg.score(enc.transform(X_train),Y_train)
+Y_train_logreg = logreg.predict_proba(enc.transform(X_train))[:,1]
+Y_train_label = logreg.predict(enc.transform(X_train))
 '''以上训练完毕，现在开始使用测试数据，对测试数据'''
 '''概率估计'''
 y_predict_logreg = logreg.predict_proba(enc.transform(X_test))[:,1]
@@ -81,9 +82,25 @@ y_predict_label = logreg.predict(enc.transform(X_test))
 Y_test_label = pd.DataFrame(y_predict_label,columns=['survived'])
 print Y_test_label
 
-'''输出'''
+'''输出 还没有解决列的替换问题'''
 '''result =df22.drop('survived',1)
 result = pd.merge(result,y_predict_label,on=index)
 print result
 '''
+
+'''ROC'''
+from sklearn.metrics import roc_curve
+fpr,tpr,_= roc_curve(Y_train,Y_train_label)
+print fpr
+print tpr
+
+'''画图'''
+plt.figure(1)
+plt.plot([0, 1], [0, 1], 'k--')
+plt.plot(fpr, tpr, label=u'基于泰坦尼克号数据使用逻辑回归分析')
+plt.xlabel('False positive rate')
+plt.ylabel('True positive rate')
+plt.title('ROC curve')
+plt.legend(loc='best')
+plt.show()
 
