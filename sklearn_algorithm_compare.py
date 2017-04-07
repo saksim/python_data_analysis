@@ -174,7 +174,7 @@ def plot_learning_curve(estimator, title, X, y, ylim=None, cv=None,n_jobs=1, tra
     plt.figure()
     plt.title(title)
     plt.xlabel(u"训练样本数量")
-    plt.ylabel(u"标签返回值")
+    plt.ylabel(u"SCORE")
     train_sizes, train_scores, test_scores = learning_curve(
     estimator, X, y, cv=cv, n_jobs=n_jobs, train_sizes=train_sizes)
     train_scores_mean = np.mean(train_scores, axis=1)
@@ -195,9 +195,103 @@ def plot_learning_curve(estimator, title, X, y, ylim=None, cv=None,n_jobs=1, tra
     return plt
 
 XX,yy= X_train,Y_train
-title = u"基于泰坦尼克号存活名单的学习曲线 (Naive Bayes)"
 cv = ShuffleSplit(n_splits=100, test_size=0.2, random_state=0)
+'''
 from sklearn.naive_bayes import GaussianNB
 estimator = GaussianNB()
+title = u"基于泰坦尼克号存活名单的学习曲线 (NaiveBayes)"
 plot_learning_curve(estimator,title,XX,yy,cv,n_jobs=1)
 plt.show()
+'''
+'''
+from sklearn.ensemble import AdaBoostClassifier
+estimator = AdaBoostClassifier()
+title = u"基于泰坦尼克号存活名单的学习曲线 (AdaBoost)"
+plot_learning_curve(estimator,title,XX,yy,cv,n_jobs=1)
+plt.show()
+'''
+'''
+from sklearn.naive_bayes import BernoulliNB
+estimator = BernoulliNB()
+title = u"基于泰坦尼克号存活名单的学习曲线 (伯努利朴素贝叶斯BernoulliNB)"
+plot_learning_curve(estimator,title,XX,yy,cv,n_jobs=1)
+plt.show()
+'''
+'''
+from sklearn.naive_bayes import MultinomialNB
+estimator = MultinomialNB()
+title = u"基于泰坦尼克号存活名单的学习曲线 (多项式朴素贝叶斯MultinomialNB)"
+plot_learning_curve(estimator,title,XX,yy,cv,n_jobs=1)
+plt.show()
+'''
+'''
+from sklearn.tree import DecisionTreeClassifier
+estimator = DecisionTreeClassifier()
+title = u"基于泰坦尼克号存活名单的学习曲线 (决策树DecisionTree)"
+plot_learning_curve(estimator,title,XX,yy,cv,n_jobs=1)
+plt.show()
+'''
+'''
+from sklearn.tree import DecisionTreeRegressor
+estimator = DecisionTreeRegressor()
+title = u"基于泰坦尼克号存活名单的学习曲线 (决策树回归DecisionTree)"
+plot_learning_curve(estimator,title,XX,yy,cv,n_jobs=1)
+plt.show()
+'''
+'''
+from sklearn.neighbors import KNeighborsClassifier
+estimator = KNeighborsClassifier()
+title = u"基于泰坦尼克号存活名单的学习曲线 (最近邻)"
+plot_learning_curve(estimator,title,XX,yy,cv,n_jobs=1)
+plt.show()
+'''
+'''
+from sklearn.ensemble import RandomForestClassifier
+estimator = RandomForestClassifier()
+title = u"基于泰坦尼克号存活名单的学习曲线 (随机森林)"
+plot_learning_curve(estimator,title,XX,yy,cv,n_jobs=1)
+plt.show()
+'''
+'''
+from sklearn.tree import DecisionTreeClassifier
+estimator = DecisionTreeClassifier(criterion='entropy')
+title = u"基于泰坦尼克号存活名单的学习曲线 (决策树DecisionTree)"
+plot_learning_curve(estimator,title,XX,yy,cv,n_jobs=1)
+plt.show()
+'''
+
+'''
+from sklearn.decomposition import TruncatedSVD
+pca = TruncatedSVD(n_components=2,n_iter=50)
+pca.fit(enc.transform(X_train))
+X_reduced = pca.transform(enc.transform(X_train))
+print("Reduced dataset shape:",X_reduced.shape)
+
+from sklearn.cluster import KMeans
+k_means = KMeans(n_clusters=2,random_state=None)
+k_means.fit(X_reduced)
+y_pred = k_means.predict(X_reduced)
+plt.scatter(X_reduced[:, 0], X_reduced[:, 1], c=Y_train,cmap='Spectral')
+plt.show()
+'''
+'''
+from sklearn.decomposition import TruncatedSVD
+pca = TruncatedSVD(n_components=2,n_iter=50)
+pca.fit(enc.transform(X_train))
+X_reduced = pca.transform(enc.transform(X_train))
+print("Reduced dataset shape:",X_reduced.shape)
+
+from sklearn.cluster import KMeans
+k_means = KMeans(n_clusters=2,random_state=None)
+k_means.fit(X_reduced)
+y_pred = k_means.predict(X_reduced)
+
+from sklearn.naive_bayes import BernoulliNB
+NB = BernoulliNB()
+NB.fit(enc.transform(X_train),Y_train)
+Y_train_lable = NB.predict(enc.transform(X_train))
+
+from sklearn.metrics import confusion_matrix
+print (confusion_matrix(Y_train,y_pred))
+print (confusion_matrix(Y_train,Y_train_lable))
+'''
