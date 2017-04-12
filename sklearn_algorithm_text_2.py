@@ -11,17 +11,17 @@ def print_topic_words(model,feature_names,n_topic_words):
         print (" ".join([feature_names[i]
                          for i in topic.argsort()[:-n_topic_words - 1:-1]]))
 
+'''读取数据'''
+for line in open('F:\\WeiWeiHe\\data.txt'):
+    corpus.append(line)
+print corpus
+'''特征数据
 from sklearn.metrics import confusion_matrix
 from sklearn.metrics import classification_report
 from sklearn.feature_extraction.text import TfidfVectorizer
 from sklearn.linear_model import SGDClassifier
 from sklearn.naive_bayes import MultinomialNB
 
-'''读取数据'''
-for line in open('F:\\WeiWeiHe\\data.txt'):
-    corpus.append(line)
-print corpus
-'''特征数据
 vectorizer = TfidfVectorizer(encoding='latin1')
 X_train =vectorizer.fit_transform(corpus)'''
 '''随机新建标签数据，并读入'''
