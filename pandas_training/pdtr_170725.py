@@ -77,3 +77,66 @@ print dfmi
 9）query()使用案例
 10）in和not in操作符 P602
 '''
+
+'''20170801'''
+dfmi = df.copy()
+'''where条件:选择满足条件的DF'''
+'''1)'''
+hww = dfmi.where(dfmi>5000.0)
+print hww
+'''2)'''
+hww1 = dfmi[dfmi > 5000.0]
+print hww1
+'''3)使用OTHER参数，用于替代条件判断为假时的值'''
+hww2 = dfmi.where(dfmi >5000.0, dfmi*100)
+print hww2
+
+'''4)输入布尔值条件进行部分选择，通过.ix返回值'''
+dfmi[ dfmi[1:4] > 5000] = 3
+print dfmi
+
+'''5)对轴和标签常量结合WHERE分配输入【即：保留满足条件的数据，不满足条件的数据按照index所在的df[列]数据进行代替】'''
+hww3 = dfmi.where(dfmi>5000.0,dfmi['CJ'],axis = 'index')
+print hww3
+df = pd.DataFrame([[1,2,3],[4,5,6],[7,8,9]])
+df = df.rename(columns={0:'a',1:'b',2:'c'})
+print df
+hww3 = df.where(df > 5, df['b'], axis='index')
+print hww3
+
+'''6)标记mask【将满足条件的数据设置为缺失值】'''
+hww4 = df.mask(df>=5)
+print hww4
+
+'''query()方法'''
+n = 10
+df = pd.DataFrame(np.random.rand(n,3),columns=list('abc'))
+'''python所选'''
+print df
+hww1 = df[(df.a < df.b) & (df.b < df.c)]
+print hww1
+'''query'''
+hww1 = df.query('(a<b) & (b<c)')
+print hww1
+df = pd.DataFrame(np.random.randint(n / 2, size=(n, 2)), columns= list('bc'))
+'''2)不使用某列作为索引，而是直接用索引'''
+hww = df.query('index < b < c')
+print hww
+'''1)若想将某列作为索引，同时完成比较'''
+df.index.name = 'a'
+print df
+hww = df.query('a<b and b <c')
+print hww
+
+'''3)如果索引名与列名重复，则选择时，这个列名优先'''
+df = pd.DataFrame({'b':np.random.randint(n,size=n / 2)})
+df.index.name = 'b'
+print df
+hww = df.query('b>2.5')
+print hww
+'''3))需要使用明确指定index索引，才能对索引进行操作'''
+hww = df.query('index > 2.5')
+print hww
+
+'''20170802 多重索引进行QUERY查询语法'''
+
