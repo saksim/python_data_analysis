@@ -139,4 +139,50 @@ hww = df.query('index > 2.5')
 print hww
 
 '''20170802 多重索引进行QUERY查询语法'''
+'''1)多重索引基础使用'''
+colors = np.random.choice(['red','green'],size=n)
+foods = np.random.choice(['hww','yyt'],size=n)
+print colors,foods
+index = pd.MultiIndex.from_arrays([colors,foods],names=['god','mylove'])
+print index
+df = pd.DataFrame(np.random.randn(n,2),index=index)
+print df
+'''结合QUERY'''
+hww = df.query('god == "red"')
+print hww
 
+'''2）QUERY使用案例:自定义QUERY表达式，并构建LAMBDA小表达式'''
+df = pd.DataFrame(np.random.rand(n,3),columns=list('abc'))
+df2 = pd.DataFrame(np.random.rand(n+2,3),columns=list('abc'))
+expr = '0.0 <= a <= c <= 0.5'
+hww = map(lambda frame: frame.query(expr),[df,df2])
+print hww
+
+'''IN与NOT IN 操作符'''
+'1）得到a列与列b具有重叠值的所有行' \
+'即：A IN B，会一一对应，一直到A列的某一行的数值不存在于B列内，则终止' \
+'对应的： A NOT IN B，是全集扣除之前A IN B的集合'
+df = pd.DataFrame({'a':list('abcabcefgefg'),'b':list('aaaabbbbcccc'),'c':np.random.randint(5,size=12),'d':np.random.randint(9,size=12)})
+print df
+hww = df.query('a in b')
+print hww
+
+'''2）合并其他表达式与IN表达式'''
+hww1 = df.query('a in b and c*2 < d')
+print hww1
+
+'''在列表中，对==操作符的特殊使用方式'''
+'使用==和/=的效果与in/not in的效果是一致的'
+hww1 = df.query('c == [1,2]')
+print hww1
+hww2 = df.query('[1,2] in c')
+print hww2
+hww1 = df.query('c != [1,2]')
+print hww1
+hww2 = df.query('[1,2] not in c')
+print hww2
+
+'''*************************
+20170803
+！！！！对重复数据的处理！！！！（P607:Duplicate data）
+*************************'''
