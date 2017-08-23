@@ -28,20 +28,22 @@ def ngrams(input, n):
     input = cleaninput(input)
     output = {}
     for i in range(len(input)-n+1):
-        ngramtemp = "".join(input[i:i+n])
+        # check if any of the words forming the n-gram is "common"
+        words = input[i:i+n]
+        if isCommon(words):continue
+        ngramtemp = " ".join(words)
         if ngramtemp not in output:
             output[ngramtemp] = 0
         output[ngramtemp] += 1
     return output
 
-#有意义词汇与无意义词汇的差异，添加isConnon函数实现筛选
-
+#HOW TO USE SUCH METHOD!!!!!!!!!!
 def isCommon(ngram):
-    commonWords = ["the", "be", "and", "of", "a", "in", "to", "have",
-                   "it","i", "that", "for", "you", "he", "with", "on",
-                   "do", "say", "this","they", "is", "an", "at", "but",
+    commonWords = ["the","The", "be", "and", "of", "a", "in", "to", "have","should","Should","were",
+                   "it","It","shall","may","i","I", "that", "being","for", "you", "he", "with", "on",
+                   "do", "say", "this","they", "is","was", "an", "at", "but","Our",
                    "we", "his", "from", "that", "not","by", "she", "or",
-                   "as", "what", "go", "their","can", "who", "get","if",
+                   "as", "what", "go", "upon","is","their","can", "who", "get","if",
                    "would", "her", "all", "my", "make", "about", "know",
                    "will","as", "up", "one", "time", "has", "been", "there",
                    "year", "so","think", "when", "which", "them", "some", "me",
