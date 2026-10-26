@@ -6,12 +6,12 @@ n_features = 1000
 corpus = [ ]
 import pandas as pd
 '''导入数据'''
-for line in open('F:\\WeiWeiHe\\data.txt'):
+for line in open('F:\\example\\data.txt'):
     corpus.append(line)
 print corpus
 ''' 经过验证，是错误的做法。【转换为字符串型的分割单词，而需要输入的是文章形式】
 导入数据
-for line in open('F:\\WeiWeiHe\\data.txt'):
+for line in open('F:\\example\\data.txt'):
     corpuss.append(line.split(' '))
 处理为strings数据
 for i in range(0,corpuss.__len__()):

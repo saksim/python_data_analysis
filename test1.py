@@ -108,7 +108,7 @@ print np.log10(df1 ** df2)
 
 '''对数据进行相关处理运算'''
 '''通过NUMPY导入数据到PANDAS中'''
-all_data_a = np.loadtxt("F:\\WeiWeiHe\\beh_master\\spark-1.6.3-bin-hadoop2.6\\data\\mllib\\lr_data.txt")
+all_data_a = np.loadtxt("F:\\example\\beh_master\\spark-1.6.3-bin-hadoop2.6\\data\\mllib\\lr_data.txt")
 print all_data_a.shape
 all_data_b = pd.DataFrame(all_data_a, columns=['x1','x2','x3','x4','x5','x6','x7','x8','x9','x10','x11'])
 '''print all_data_b'''

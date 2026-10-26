@@ -6,7 +6,7 @@ import numpy as np
 from sklearn import preprocessing
 import pandas as pd
 
-df = pd.read_excel('F:\\WeiWeiHe\\titanic.xls')
+df = pd.read_excel('F:\\example\\titanic.xls')
 '''df.convert_objects(convert_numeric=True)'''''
 '''df.fillna(0, inplace=True)'''
 

@@ -7,7 +7,7 @@ import numpy as np
 from sklearn.cluster import KMeans
 import pandas as pd
 
-df = pd.read_csv('F:\\WeiWeiHe\\titanic.csv')
+df = pd.read_csv('F:\\example\\titanic.csv')
 print(df.head())
 
 def handle_non_numerical_data(df):
@@ -33,4 +33,4 @@ def handle_non_numerical_data(df):
 df = handle_non_numerical_data(df)
 print(df.head())
 
-dfcsv = df.to_csv('F:\\WeiWeiHe\\titanic_handled1.csv',index = False)
+dfcsv = df.to_csv('F:\\example\\titanic_handled1.csv',index = False)

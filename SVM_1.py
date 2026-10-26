@@ -7,7 +7,7 @@ from sklearn.cluster import KMeans
 from sklearn import preprocessing
 import pandas as pd
 
-df = pd.read_excel('F:\\WeiWeiHe\\titanic.xls')
+df = pd.read_excel('F:\\example\\titanic.xls')
 df.convert_objects(convert_numeric=True)
 '''df.fillna(0, inplace=True)'''
 print df
@@ -109,9 +109,9 @@ print '%f'%(percent1/percent2)
 print (float(correct)/float(len(X)))
 
 from sklearn.externals import joblib
-joblib.dump(clf, 'F:\\WeiWeiHe\\KMeans.pkl')
-newmodel = joblib.load('F:\\WeiWeiHe\\KMeans.pkl')
-df2 = pd.DataFrame([3,"WeiWeiHE",'male',28,0,0,41813,176.2917,'A15','C',8,None,'China'])
+joblib.dump(clf, 'F:\\example\\KMeans.pkl')
+newmodel = joblib.load('F:\\example\\KMeans.pkl')
+df2 = pd.DataFrame([3,"example",'male',28,0,0,41813,176.2917,'A15','C',8,None,'China'])
 handle_non_numerical_data(df2)
 df2 = np.array(df2).astype(float)
 df2 = df2.reshape(-1,len(df2))

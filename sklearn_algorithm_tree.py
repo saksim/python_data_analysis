@@ -7,12 +7,12 @@ from sklearn import preprocessing
 import pandas as pd
 
 '''前一批数据'''
-df11 = pd.read_excel('F:\\WeiWeiHe\\titanic.xls')
+df11 = pd.read_excel('F:\\example\\titanic.xls')
 '''df.convert_objects(convert_numeric=True)'''''
 '''df.fillna(0, inplace=True)'''
 
 '''这一批数据'''
-df22 =pd.read_excel('F:\\WeiWeiHe\\titanic_new.xls')
+df22 =pd.read_excel('F:\\example\\titanic_new.xls')
 
 '''将数据汇总作为总数据'''
 df_all = df11.append(df22,ignore_index=True)

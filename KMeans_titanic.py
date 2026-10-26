@@ -25,7 +25,7 @@ boat Lifeboat
 body Body Identification Number
 home.dest Home/Destination
 '''
-df = pd.read_csv('F:\\WeiWeiHe\\titanic.csv')
+df = pd.read_csv('F:\\example\\titanic.csv')
 '''df = pd.read_excel('titanic.xls')'''
 #print(df.head())
 df.drop(['body','name'], 1, inplace=True)
@@ -100,5 +100,5 @@ print (correct/len(X))
 '''
 
 '''
-dfcsv = df.to_csv('F:\\WeiWeiHe\\titanic_handled1.csv',index = False)
+dfcsv = df.to_csv('F:\\example\\titanic_handled1.csv',index = False)
 '''

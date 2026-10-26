@@ -9,16 +9,16 @@ read_clipboard 读剪切板中的数据【多用于网页转换为表格】
 import pandas as pd
 
 '''读CSV文件'''
-df = pd.read_csv("F:/WeiWeiHe/beh_master/spark-1.6.3-bin-hadoop2.6/data/mllib/sample_tree_data.csv")
+df = pd.read_csv("F:/example/beh_master/spark-1.6.3-bin-hadoop2.6/data/mllib/sample_tree_data.csv")
 
 '''使用read_table度csv'''
-df2 = pd.read_table("F:/WeiWeiHe/beh_master/spark-1.6.3-bin-hadoop2.6/data/mllib/sample_tree_data.csv",sep=',')
+df2 = pd.read_table("F:/example/beh_master/spark-1.6.3-bin-hadoop2.6/data/mllib/sample_tree_data.csv",sep=',')
 
 '''处理无标题的方案：添加参数header=none,或者自己添加标题'''
-'''df = pd.read_csv("F:/WeiWeiHe/beh_master/spark-1.6.3-bin-hadoop2.6/data/mllib/sample_tree_data.csv",header=None)'''
+'''df = pd.read_csv("F:/example/beh_master/spark-1.6.3-bin-hadoop2.6/data/mllib/sample_tree_data.csv",header=None)'''
 '''print df'''
 
-df = pd.read_csv("F:/WeiWeiHe/beh_master/spark-1.6.3-bin-hadoop2.6/data/mllib/sample_tree_data.csv",names=['a','b','c','d','e','f','g','h','i','j','k','l','m','n','o','p','q','r','s','t','u','v','w','x','y','z','aa','bb','cc','dd'])
+df = pd.read_csv("F:/example/beh_master/spark-1.6.3-bin-hadoop2.6/data/mllib/sample_tree_data.csv",names=['a','b','c','d','e','f','g','h','i','j','k','l','m','n','o','p','q','r','s','t','u','v','w','x','y','z','aa','bb','cc','dd'])
 print df
 '''也可以为这个DataFrame做个索引'''
 '''

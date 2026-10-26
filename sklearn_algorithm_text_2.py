@@ -12,7 +12,7 @@ def print_topic_words(model,feature_names,n_topic_words):
                          for i in topic.argsort()[:-n_topic_words - 1:-1]]))
 
 '''读取数据'''
-for line in open('F:\\WeiWeiHe\\data.txt'):
+for line in open('F:\\example\\data.txt'):
     corpus.append(line)
 print corpus
 '''特征数据
@@ -26,7 +26,7 @@ vectorizer = TfidfVectorizer(encoding='latin1')
 X_train =vectorizer.fit_transform(corpus)'''
 '''随机新建标签数据，并读入'''
 '''
-for line in open('F:\\WeiWeiHe\\data_y.txt'):
+for line in open('F:\\example\\data_y.txt'):
     corpus_y.append(line)
 print corpus_y
 '''
@@ -34,7 +34,7 @@ print corpus_y
 '''分类器
 import pandas as pd
 import matplotlib.pyplot as plt
-y_train = pd.read_table('F:\\WeiWeiHe\\data_y.txt',header=None)
+y_train = pd.read_table('F:\\example\\data_y.txt',header=None)
 y_train = np.array(y_train).ravel()
 print y_train
 X_test = X_train
@@ -74,7 +74,7 @@ plt.show()
 
 import pandas as pd
 import matplotlib.pyplot as plt
-y_train = pd.read_table('F:\\WeiWeiHe\\data_y.txt',header=None)
+y_train = pd.read_table('F:\\example\\data_y.txt',header=None)
 y_train = np.array(y_train).ravel()
 X_train = corpus
 '''获取Y中标签的类别总数'''

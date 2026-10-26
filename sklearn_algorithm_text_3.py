@@ -33,19 +33,19 @@ if len(args) > 0:
 op.print_help()
 
 '''读入数据'''
-for line in open('F:\\WeiWeiHe\\data.txt'):
+for line in open('F:\\example\\data.txt'):
     X_train.append(line)
 print X_train
 
-for line in open('F:\\WeiWeiHe\\data_y.txt'):
+for line in open('F:\\example\\data_y.txt'):
     Y_train.append(line)
 print Y_train
 
-for line in open("F:\\WeiWeiHe\\datatest.txt"):
+for line in open("F:\\example\\datatest.txt"):
     X_test.append(line)
 print X_test
 
-for line in open("F:\\WeiWeiHe\\data_ytest.txt"):
+for line in open("F:\\example\\data_ytest.txt"):
     Y_test.append(line)
 print Y_test
 
