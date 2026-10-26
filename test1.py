@@ -41,7 +41,7 @@ print 'he' in obs2
 print 'weiwei' in obs2
 print "***********************************************"
 '''特点4） 存于字典中的数据可以创建Series'''
-sdata = {"heweiwei":13624,"liuyifei":13721,"zhaoxin":14928}
+sdata = {"sample_person":10001,"liuyifei":13721,"zhaoxin":14928}
 obs3 = pd.Series(sdata)
 print obs3
 print "***********************************************"
@@ -80,7 +80,7 @@ print "***********************************************"
 '''重新索引'''
 obs4 = pd.Series([4.5,7.2,-5.3,3.6],index=['d','b','a','c'])
 print obs4
-obs4_re = obs4.reindex(['c','mayifei','yangxinyu','yaoyutong','heweiwei','god','saksim'])
+obs4_re = obs4.reindex(['c','mayifei','yangxinyu','yaoyutong','sample_person','god','saksim'])
 print obs4_re
 print "***********************************************"
 '''使用ffill前向值填充'''

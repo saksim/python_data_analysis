@@ -41,17 +41,17 @@ print df.sub(column,axis = 'index')
 '''
 '''注意：如果是直接使用NP，则必须是等长度的！'''
 '''df = pd.DataFrame({'HS':np.random.rand(10),'MJ':np.random.random(5),'CJ':np.random.randn(9)})'''
-df = pd.DataFrame({'HS':pd.Series(8000*np.random.rand(10), index= ['heweiwei0107','heweiwei01071','wh13624','qq2994146706','heweiwie01072','heweiwei0109','cstdm','9692309982','heweiwei01073','249146147']),
-                   'MJ':pd.Series(5000*np.random.random(5), index= ['heweiwei01071','wh13624','cstdm','9692309982','249146147']),
-                   'CJ':pd.Series(10000*np.random.rand(9), index= ['heweiwei0107','heweiwei01071','wh13624','qq2994146706','heweiwie01072','cstdm','9692309982','heweiwei01073','249146147'])})
+df = pd.DataFrame({'HS':pd.Series(8000*np.random.rand(10), index= ['sample_01','sample_02','sample_03','sample_04','sample_05','sample_06','sample_07','sample_08','sample_09','sample_10']),
+                   'MJ':pd.Series(5000*np.random.random(5), index= ['sample_02','sample_03','sample_07','sample_08','sample_10']),
+                   'CJ':pd.Series(10000*np.random.rand(9), index= ['sample_01','sample_02','sample_03','sample_04','sample_05','sample_07','sample_08','sample_09','sample_10'])})
 print df
 
 '''
 4.4)使用pandas序列设置多重索引DF
 '''
 dfmi = df.copy()
-dfmi.index = pd.MultiIndex.from_tuples([('heweiwei','1'),('heweiwei','2'),('wh13624','1'),('qq','1'),('heweiwei','3'),
-                                        ('heweiwei','4'),('heweiwei','5'),('relation','1'),('relation','2'),('heweiwei','6')],
+dfmi.index = pd.MultiIndex.from_tuples([('sample_person','1'),('sample_person','2'),('sample_03','1'),('qq','1'),('sample_person','3'),
+                                        ('sample_person','4'),('sample_person','5'),('relation','1'),('relation','2'),('sample_person','6')],
                                        names=['first','second'])
 column = dfmi['HS']
 dfmi = dfmi.sub(column,axis=0,level='second')

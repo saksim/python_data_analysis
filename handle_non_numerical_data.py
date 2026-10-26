@@ -1,4 +1,4 @@
-__author__ = 'heweiwei'
+__author__ = 'saksim'
 
 import matplotlib.pyplot as plt
 from matplotlib import style
